@@ -1,0 +1,38 @@
+{
+  "name": "project_redwing",
+  "version": "1.0.0",
+  "description": "This is the biggest bot project i have undertaken to date",
+  "main": "./src/bot.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon . --inspect --watch *.js --watch .env",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DetroitWhiskey136/project-redwing.git"
+  },
+  "keywords": [],
+  "authors": [
+    "Danno3817",
+    "DanPlayz",
+    "Destiny"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DetroitWhiskey136/project-redwing/issues"
+  },
+  "homepage": "https://github.com/DetroitWhiskey136/project-redwing#readme",
+  "dependencies": {
+    "better-sqlite3": "^5.4.3",
+    "discord.js": "git+https://github.com/discordjs/discord.js.git#master",
+    "dotenv": "^8.2.0",
+    "enmap": "^5.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "nodemon": "^2.0.1"
+  }
+}
