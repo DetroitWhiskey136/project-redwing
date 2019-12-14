@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = {
+  REGEX: {
+    REGEX: /[.*+?^${}()|[\]\\]/g,
+  },
   COLORS: {
     READY: '#2ecc71',
     ERROR: '#e74c3c',

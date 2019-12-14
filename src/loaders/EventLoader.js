@@ -10,8 +10,8 @@ class EventLoader extends Loader {
 
   async load() {
     const logs = [];
-    await requireDirectory(`${process.cwd()}/data/events`, (Event, fileName) => {
-      const event = new Event(this.client);
+    await requireDirectory(`${process.cwd()}/data/events`, (BotEvent, fileName) => {
+      const event = new BotEvent(this.client);
       logs.push(fileName);
       this.client.on(fileName, (...args) => event.on(this.client, ...args));
     }, console.error);
