@@ -7,7 +7,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # Data Files
-data/
+data/enmap/
 
 # Test File local
 test*
