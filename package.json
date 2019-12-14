@@ -28,11 +28,22 @@
     "better-sqlite3": "^5.4.3",
     "discord.js": "git+https://github.com/discordjs/discord.js.git#master",
     "dotenv": "^8.2.0",
-    "enmap": "^5.2.3"
+    "enmap": "^5.2.3",
+    "module-alias": "^2.2.2"
   },
   "devDependencies": {
     "eslint": "^6.7.2",
     "eslint-plugin-promise": "^4.2.1",
     "nodemon": "^2.0.1"
+  },
+  "_moduleAliases": {
+    "@root": "src",
+    "@events": "data/events",
+    "@commands": "data/commands",
+    "@database": "src/database",
+    "@loaders": "src/loaders",
+    "@structures": "src/structures",
+    "@command": "src/structures/command",
+    "@utils": "src/utils"
   }
 }

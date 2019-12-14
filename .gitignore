@@ -9,6 +9,8 @@ lerna-debug.log*
 # Data Files
 data/
 
+# Test File local
+test*
 
 # Dependency directories
 node_modules/

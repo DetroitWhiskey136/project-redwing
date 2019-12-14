@@ -1,6 +1,19 @@
 'use strict';
 
 module.exports = {
+  COLORS: {
+    READY: '#2ecc71',
+    ERROR: '#e74c3c',
+    WARN: '#FF8C00',
+    LOG: 'ff0000',
+    DEBUG: '#C46753',
+    WELCOME: '7FE8AA',
+    LEAVE: '#C72511',
+    GENERAL: '3dd0f4',
+  },
+  CHANNELS: {
+    logs: '653673759848529931',
+  },
   DISABLED_EVENTS: [
     'TYPING_START',
   ],
