@@ -19,7 +19,7 @@ class Eval extends Command {
   }
 
   async run(ctx) {
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars, max-len
     const { args, author, channel, client, command, database, emoji, guild, member, message, prefix, query, guildData } = ctx;
     const embed = new MessageEmbed();
     const text = query.replace(/^```(js|javascript ?\n)?|```$/gi, '');

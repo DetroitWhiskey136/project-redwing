@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "@root/*": ["src/*"],
+      "@events/*": ["data/events/*"],
+      "@commands/*": ["data/commands/*"],
+      "@database/*": ["src/database/*"],
+      "@loaders/*": ["src/loaders/*"],
+      "@structures/*": ["src/structures/*"],
+      "@command/*": ["src/structures/command/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
