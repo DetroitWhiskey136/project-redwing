@@ -31,7 +31,7 @@ class MessageEvent extends Event {
     const fixedPrefix = escapeRegExp(prefix);
     const fixedUsername = escapeRegExp(client.user.username);
 
-    const PrefixRegex = new RegExp(`^(<@!?${client.user.id}>|${fixedPrefix}|${fixedUsername})(\s+)?`, 'i');
+    const PrefixRegex = new RegExp(`^(<@!?${client.user.id}>|${fixedPrefix}|${fixedUsername})`, 'i', '(\s+)?');
 
     let usedPrefix = content.match(PrefixRegex);
     usedPrefix = usedPrefix && usedPrefix.length && usedPrefix[0];
