@@ -1,26 +1,27 @@
-/* eslint-disable no-template-curly-in-string */
+/* eslint-disable no-useless-escape */
 'use strict';
-
 module.exports = {
-  REGEX: {
-    REGEX: /[.*+?^${}()|[\]\\]/g,
-  },
-  COLORS: {
-    READY: '#2ecc71',
-    ERROR: '#e74c3c',
-    WARN: '#FF8C00',
-    LOG: 'ff0000',
-    DEBUG: '#C46753',
-    WELCOME: '7FE8AA',
-    LEAVE: '#C72511',
-    GENERAL: '3dd0f4',
-  },
-  CHANNELS: {
-    logs: '653673759848529931',
-  },
   DISABLED_EVENTS: [
     'TYPING_START',
   ],
+  DEFAULTS: {
+    prefix: '!',
+    systemNotice: 'true',
+    welcomeEnabled: 'false',
+    welcomeChannel: 'welcome',
+    welcomeMessage: ' We have a new member, lets give him/her a warm welcome',
+    adminRole: 'Administrator',
+    modRole: 'Moderator',
+    modLogChannel: 'mod-log',
+  },
+  REGEX: {
+    ROLE_ID: /^[0-9]{16,19}$/,
+    ROLE_MENTION: /^(?:<@&)([0-9]{16,19})(?:>)$/,
+    USER_ID: /^[0-9]{16,19}$/,
+    MEMBER_MENTION: /^(?:<@!?)?([0-9]{16,19})(?:>)?$/,
+    REGEX: /[.*+?^${}()|[\]\\]/g,
+    DOMAINS: /^https?:\/\/(www\.)?(pastebin|(gist\.)?github|gitlab)\.com\/\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?$/i,
+  },
   CLIENT_OPTIONS: {
     fetchAllMembers: true,
     disableEveryone: true,
@@ -28,14 +29,17 @@ module.exports = {
     messageCacheMaxSize: 100,
     messageCacheLifetime: 240,
     messageSweepInterval: 300,
-    presence: {
-      activity: {
-        name: 'you',
-        type: 'WATCHING',
-      },
-    },
     ws: {
       large_threshold: 1000,
     },
+  },
+  PERM_NAMES: {
+    user: 'User',
+    moderator: 'Moderator',
+    administrator: 'Administrator',
+    serverowner: 'Server Owner',
+    botsupport: 'Bot Support',
+    botadmin: 'Bot Admin',
+    botowner: 'Bot Owner',
   },
 };

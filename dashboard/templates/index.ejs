@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('blocks/header', {bot, user, path}) %>
+  </head>
+  <body>
+    <% include ./blocks/navigation %>
+    <br><br>
+    <div class="jumbotron" style="margin: 0 25px">
+      <div>
+        <h1><%= bot.user.username %> Dashboard</h1>
+        <h4><% if(bot.appInfo.description.length > 3) { %> <%= bot.appInfo.description %> <% } else { %>No description given.<% }%></h4>
+        <p><a class="btn btn-primary" href="/commands" role="button">Command Help »</a></p>
+      </div>
+    </div>
+    
+    <br><br>
+    
+    <% include ./blocks/footer %>
+  </body>
+</html>
+  
+
+

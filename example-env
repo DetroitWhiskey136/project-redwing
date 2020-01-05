@@ -1,1 +1,10 @@
 DISCORD_TOKEN=your-token-goes-here-derp
+PREFIX=y-
+
+CLIENT_SECRET=yourclientsecret
+SESSION_SECRET=addasuperlongsecretstringhereforshitandgiggles
+CLIENTID=doihavetotellyouwhatgoeshere
+
+YOUTUBE_API=dontworryaboutthisitsnotneededrn
+
+DEBUG=false

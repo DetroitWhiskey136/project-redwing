@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+/* The navigation menu */
+.topnav {
+  overflow: hidden;
+  background-color: #333333;
+}
+
+/* Navigation links */
+.topnav a {
+  float: left;
+  display: block;
+  font-size: 17px;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  height: 3.6rem;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: right;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  cursor: pointer;
+  font-size: 17px; 
+  border: 2px solid transparent;
+  outline: none;
+  color: #f2f2f2;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.topnav a:hover, .subnav:hover .subnavbtn, .subnavbtn:focus {
+  background-color: #f2f2f2;
+  color: #333333;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  float: right;
+  right: 0px;
+  top: 57px;
+  display: none;
+  position: absolute;
+  background-color: #333333;
+  max-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100;
+  
+  border-radius: 5px;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  display: block;
+  float: left;
+  color: #f2f2f2;
+  text-decoration: none;
+  height: 3.6rem;
+  text-align: left;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #f2f2f2;
+  color: #333333;
+}
+
+
+
+.show {
+  display: block;
+}
+
+.topnav-brand img{
+  display: inline-block;
+  line-height: 0;
+  font-size: 0;
+  vertical-align: middle;
+  border: none;
+  object-fit: contain;
+}
+
+.topnav .topnav-toggle {
+  display: none;
+}
+
+.topnav-toggle {
+  float: right;
+  padding: 14px 16px;
+  margin: 0;
+  background: 0 0;
+  border: none;
+  text-decoration: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 0.25rem;
+  outline: none !important;
+  user-select: none;
+  cursor: pointer;
+}
+
+.topnav-toggler-icon {
+  pointer-events: none;
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.topnav-toggler-icon:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, .5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 700px) {
+  .topnav a:not(:first-child) {display: none;}
+  .subnav a {display: block !important;}
+  .topnav .topnav-toggle {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .topnav-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .subnav button {
+    position: absolute;
+    right: 50px;
+    top: 0;
+  }
+  
+  .subnav-content {
+    right: 52px;
+    top: 57px;
+  }
+}

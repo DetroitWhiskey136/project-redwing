@@ -1,0 +1,53 @@
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="<%= bot.user.username %>"/>
+  <meta property="og:title" content="<%= bot.user.username %> Dashboard"/>
+  <meta property="og:type" content="website" />
+  <!--This redirects to the this site no matter what link-->
+  <meta property="og:description" content="<% if(bot.appInfo.description.length > 3) { %> <%= bot.appInfo.description %> <% } else { %>No description given.<% }%>"/>
+  <meta property="og:image" content="<%= bot.user.displayAvatarURL({format: 'png', size: 64}) %>"/>
+  <meta property="og:site_name" content="<%= bot.user.username %> Dashboard"/>
+  <meta property="og:locale" content="en_US" />
+
+  <link
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
+  <link
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+    integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"
+    integrity="sha256-zG8v+NWiZxmjNi+CvUYnZwKtHzFtdO8cAKUIdB8+U9I="
+    crossorigin="anonymous"
+  ></script>
+
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+
+  <title><%= bot.user.username %> Dashboard</title>
+
+  <link rel="stylesheet" href="/public/css/darkly.css" />
+  <link rel="stylesheet" href="/public/css/dashboard.css" />
+  <link rel="stylesheet" href="/public/css/index.css" />
+  <link rel="icon" href="<%= bot.user.displayAvatarURL({format: 'png', size: 64}) %>" />
+
+

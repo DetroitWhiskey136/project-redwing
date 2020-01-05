@@ -1,17 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target" :"es2017",
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
     "paths": {
       "@root/*": ["src/*"],
-      "@events/*": ["data/events/*"],
-      "@commands/*": ["data/commands/*"],
+      "@command/*": ["src/command/*"],
       "@database/*": ["src/database/*"],
-      "@loaders/*": ["src/loaders/*"],
+      "@classes/*": ["src/database/classes/*"],
+      "@event/*": ["src/event/*"],
+      "@permissions/*": ["src/permissions/*"],
       "@structures/*": ["src/structures/*"],
-      "@command/*": ["src/structures/command/*"],
-      "@utils/*": ["src/utils/*"]
+      "@discord/*": ["src/structures/discord/*"],
+      "@utils/*": ["src/utils/*"],
+      "@commands/*": ["data/commands/*"],
+      "@events/*": ["data/events/*"]
     }
   },
   "exclude": ["node_modules"]

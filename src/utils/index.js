@@ -1,8 +1,9 @@
 'use strict';
-
 module.exports = {
   Constants: require('./Constants'),
-  FileUtils: require('./FileUtils'),
-  MessageUtils: require('./MessageUtils'),
+  dashboard: require('./dashboard'),
+  GuildUtils: require('./GuildUtils'),
+  Logger: require('./Logger'),
+  RoleUtils: require('./RoleUtils'),
   Utils: require('./Utils'),
 };

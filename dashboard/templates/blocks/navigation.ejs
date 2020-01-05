@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="../../public/css/navigation.css">
+<nav class="topnav" id="mainTopNav">
+  <a class="topnav-brand active" href="/">
+    <img src="<%= bot.user.displayAvatarURL({size: 32, format: 'png'}) %>" class="brand-image"/>
+    <%= bot.user.username %>
+  </a>
+  <a href="/commands">Commands</a>
+  <a href="https://discordapp.com/oauth2/authorize?client_id=<%= bot.appInfo.id %>&scope=bot&response_type=code&redirect_uri=<%= encodeURIComponent(bot.config.dashboard.callbackURL) %>">Add to Server</a>
+  <a class="nav-link" href="/stats">On <%= bot.guilds.size %> Servers</a>
+  <button class="topnav-toggle" type="button" onclick="toggleNav()">
+    <span class="topnav-toggler-icon"></span>
+  </button>
+  <% if (user) { %>
+    <div class="subnav">
+      <button class="subnavbtn" onclick="toggleDropdown()"><%= `${user.username} ` %> <i class="fa fa-caret-down"></i></button>
+    
+      <div class="subnav-content" id="LoginDropDown">      
+        <a href="/dashboard"><i class="fa fa-cogs" aria-hidden="true"></i> Dashboard</a>
+        <% if(user.id === bot.appInfo.owner.id) { %>
+          <a href="/admin"><i class="fa fa-key"></i> Admin</a>
+        <% } %>
+        <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        </div>
+      </div> 
+  <% } else { %>
+    <a href="/login" class="right"><i class="fa fa-key"></i> Login</a>
+  <% } %>
+</nav>
+<script>
+function toggleNav() {
+  var x = document.getElementById("mainTopNav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+function toggleDropdown() {
+  document.getElementById("LoginDropDown").classList.toggle("show");
+}
+
+window.onclick = function(e) {
+  if (!e.target.matches('.subnavbtn')) {
+  var myDropdown = document.getElementById("LoginDropDown");
+    if (myDropdown !== null) {
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+    }
+  }
+
+  if (!e.target.matches('.topnav-toggle')) {
+    var myTopNav = document.getElementById('mainTopNav')
+    if (myTopNav.classList.contains('responsive')) {
+      myTopNav.classList.remove('responsive')
+    }
+  }
+}
+</script>
