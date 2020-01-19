@@ -17,7 +17,7 @@ class SuggestCommand extends Command {
   }
 
   run({ totalLength, message, mentions, member, guild, author, channel, client, voiceChannel, level, prefix, database, query, args, discord, messageEmbed, sendMessage }) { // eslint-disable-line no-unused-vars
-    const blacklist = database.blacklist
+    const blacklist = database.fn.blacklist;
     const suggestchan = server.channels.find(c => c.name == "suggestions");
     const e = new messageEmbed();
 
@@ -34,7 +34,7 @@ class SuggestCommand extends Command {
       e.setDescription(`<:denied:482509383893516288> Usage: \`${prefix}suggest <suggestion>\``).setColor('RED').setTimestamp();
       return message.channel.send(e);
     }
-    const suggestmsg = args.join(' ').replace(args[0], '').replace(' ', '');
+    const suggestmsg = args.join(' ').replace(args[0], '').trim();
     e.setAuthor(`${msg.member.user.username}'s Suggestion`, msg.member.user.avatarURL).setDescription(suggestmsg).setColor('BLUE').setTimestamp()
     suggestchan.send(e).then(m => m.react(`482509383918551040`).then(m.react('482509383893516288')));
     e.setDescription(`<:approved:482509383918551040> Your suggestion has been sent.`).setColor('GREEN');

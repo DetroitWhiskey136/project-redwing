@@ -17,11 +17,11 @@ class TodoCommand extends Command {
   run({ totalLength, message, mentions, member, guild, author, channel, client, voiceChannel, level, prefix, database, query, args: [task, ...content], discord, messageEmbed, sendMessage }) {
     if (!task) {
       return sendMessage('List All used');
-    } else if (task.toLowerCase() === 'add') {
+    } else if (['add'].includes(task.toLowerCase())) {
       return sendMessage('Add used');
-    } else if (task.toLowerCase() === 'edit') {
+    } else if (['edit'].includes(task.toLowerCase())) {
       return sendMessage('Edit used');
-    } else if (task.toLowerCase() === 'delete') {
+    } else if (['delete', 'del'].includes(task.toLowerCase())) {
       return sendMessage('Delete used');
     }
   }
