@@ -33,7 +33,7 @@ class SubmitCommand extends Command {
       getMessages(m, quest);
     });
 
-    function getMessages(m, quest){
+    function getMessages(m, ques){
       const filter = m => m.author.id === message.author.id;
       message.channel.awaitMessages(filter, {max: 1, time: 60000}).then(collected => {
         if(collected.first().content === "cancel"){

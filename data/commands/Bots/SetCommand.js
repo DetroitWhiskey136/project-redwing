@@ -41,8 +41,7 @@ class EditCommand extends Command {
               e.setDescription(`<:denied:482509383893516288> You are not the bot owner or staff!`).setColor('RED')
               message.channel.send(e);
             }
-          }
-          else if (args[1] == "description" || args[1] == "desc") {
+          } else if (args[1] == "description" || args[1] == "desc") {
             if (args.length > 3) {
               const newdesc = args.join(' ').replace(args[0], '').replace(args[1], '').replace(args[2], '').replace(' ', '');
               if (bots.get(user.user.id, 'owner') == message.member.id) {
@@ -65,8 +64,7 @@ class EditCommand extends Command {
               e.setDescription(`<:denied:482509383893516288> Please specify a new description.`).setColor('RED');
               message.channel.send(e);
             }
-          }
-          else if (args[1] == "status" || args[1] == "stat") {
+          } else if (args[1] == "status" || args[1] == "stat") {
             if (args.length > 3) {
               if (member.roles.some(r => ['Admin'].includes(r.name))) {
                 // Set the status
@@ -82,8 +80,7 @@ class EditCommand extends Command {
               e.setDescription(`<:denied:482509383893516288> Please specify a new status.`).setColor('RED');
               message.channel.send(e);
             }
-          }
-          else {
+          } else {
             // Action not specified.
             e.setColor('RED');
             if (member.roles.some(r => ['Admin'].includes(r.name))) {

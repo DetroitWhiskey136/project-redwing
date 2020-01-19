@@ -37,7 +37,7 @@ class VoteCommand extends Command {
     cooldowns.ensure(author.id, { vote: null });
 
     if (guild.id != '407624561115398164') {
-      embed.setDescription(`This command can only be used in ${client.guilds.get('407624561115398164').name}`);
+      embed.setDescription(`This command an only be used in ${client.guilds.get('407624561115398164').name}`);
       return sendMessage(embed);
     } else if (cooldowns.get(author.id, 'vote') != null || getWait(new Date(cooldowns.get(author.id, 'vote')), new Date()) == true) {
       vote();

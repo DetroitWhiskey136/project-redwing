@@ -49,12 +49,10 @@ class MuteCommand extends Command {
 
     if(mem.roles.has(muterole.id)){
       mem.roles.remove([muterole.id]).catch(err => console.log(err));
-      //database.fn.users.set(mem.id, { muted: false});
       embed.setDescription(`Unmuted ${mem}`).setColor('GREEN');
       return sendMessage(embed);
     }else{
       mem.roles.add([muterole.id]).catch(err => console.log(err));
-      //database.fn.users.set(mem.id, { muted: true});
       embed.setDescription(`Muted ${mem}`).setColor('GREEN');
       return sendMessage(embed);
     }
