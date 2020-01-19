@@ -18,7 +18,7 @@ class InfoCommand extends Command {
 
   run({ totalLength, message, mentions, member, guild, author, channel, client, voiceChannel, level, prefix, database, query, args, discord, messageEmbed, sendMessage }) { // eslint-disable-line no-unused-vars
     const args = msg.content.replace(server.tag, '').split(/ +/g);
-    const bots = database.fn.bots
+    const bots = database.fn.bots;
     const e = new messageEmbed().setFooter(author.username, author.avatarURL);
 
     if(args.length != 1){
@@ -54,14 +54,14 @@ class InfoCommand extends Command {
     }else if(bots.get(botid, "status") == "official"){
       status = "Official Bot";
     }
-    e.addField('Bot Type', status, true);
-    e.addField('Prefix', `\`${bots.get(botid, "prefix")}\``, true);
+    a.addField('Bot Type', status, true);
+    a.addField('Prefix', `\`${bots.get(botid, "prefix")}\``, true);
     if(bots.get(botid, "status") != "official"){ // Not an offical bot...
-      e.addField('Monthly Votes', bots.get(botid, "monthly_votes"), true);
-      e.addField('Total Votes', bots.get(botid, "alltime_votes"), true);
+      a.addField('Monthly Votes', bots.get(botid, "monthly_votes"), true);
+      a.addField('Total Votes', bots.get(botid, "alltime_votes"), true);
     }
-    e.addField('Description', bots.get(botid, "description"), true);
-    sendMessage(e);
+    a.addField('Description', bots.get(botid, "description"), true);
+    sendMessage(a);
   }
 }
 
