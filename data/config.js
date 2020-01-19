@@ -7,7 +7,7 @@ const config = {
    *
    * Array of user ID Strings
    */
-  admins: ['190324299083546624', '385132696135008259', '211607587232153600'],
+  admins: ['190324299083546624', '385132696135008259', '211607587232153600', '141521475478880256'],
 
   /**
    * Bot Support, Level 8 by default.
@@ -38,7 +38,7 @@ const config = {
    * @note DO NOT REMOVE THIS UNTIL YOUR BOT IS LOADED AND FUNCTIONAL.
    */
   defaultSettings: {
-    prefix: '!',
+    prefix: ';',
     systemNotice: 'true',
     welcomeEnabled: 'false',
     welcomeChannel: 'welcome',

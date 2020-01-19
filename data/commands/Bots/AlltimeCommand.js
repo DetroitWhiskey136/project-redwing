@@ -23,7 +23,7 @@ class TemplateCommand extends Command {
     const list = [];
     let num = 1;
     for(const data of top5) {
-        if(data.status != "official" || data.status != "de"){
+        if(data.status != "official" || data.status != "dev"){
             list.push(`**${num})** ${client.users.get(data.id)} - **Votes ${data.alltime_votes}**`);
             num=num+1
         }

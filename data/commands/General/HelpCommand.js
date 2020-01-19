@@ -42,7 +42,7 @@ class HelpCommand extends Command {
 
       const output = [];
       commands.forEach((cmd) => {
-        output.push(`**${prefix}${cmd.name}:**  ⟶  ${cmd.description}\n`);
+        output.push(`**${prefix}${cmd.name}**  ⟶  ${cmd.description}\n`);
       });
 
       if (commands.length <= 0) {
