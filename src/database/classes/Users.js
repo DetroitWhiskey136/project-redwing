@@ -1,6 +1,6 @@
 'use strict';
 
-class Cooldowns {
+class Users {
   constructor(client, database) {
     this.client = client;
     this.database = database;
@@ -12,7 +12,7 @@ class Cooldowns {
    * @returns {Enmap} The database.
    */
   get(id) {
-    return this.database.cooldowns.get(id);
+    return this.database.users.get(id);
   }
   
   /**
@@ -23,7 +23,7 @@ class Cooldowns {
    */
   set(bid, data) {
     const { muted, votecool } = data
-    return this.database.cooldowns.set(bid, data);
+    return this.database.users.set(bid, data);
   }
 
   /**
@@ -34,7 +34,7 @@ class Cooldowns {
    * @returns {Enmap} The database.
    */
   update(id, {key, value}) {
-    let oldData = this.database.cooldowns.get(id);
+    let oldData = this.database.users.get(id);
     oldData[key] = value;
   }
 
@@ -45,7 +45,7 @@ class Cooldowns {
    * @returns {Enmap} the database.
    */
   delete(id) {
-    return this.database.cooldowns.delete(id);
+    return this.database.users.delete(id);
   }
 
   /**
@@ -55,8 +55,8 @@ class Cooldowns {
    */
   ensure(id, data) {
     //const { alltime_votes, certified, description, embedobj, id, monthly_votes, name, owner, prefix, status } = data
-    if(!this.database.cooldowns.get(id)){
-      this.database.cooldowns.set(id, data);
+    if(!this.database.users.get(id)){
+      this.database.users.set(id, data);
       return true;
     }
     return false;
@@ -66,4 +66,4 @@ class Cooldowns {
 
 }
 
-module.exports = Cooldowns;
+module.exports = Users;
