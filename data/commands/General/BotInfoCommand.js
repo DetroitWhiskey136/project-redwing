@@ -10,7 +10,7 @@ class BotInfoCommand extends Command {
     super(client, {
       name: 'botinfo',
       description: 'Displays information about the bot',
-      category: 'System',
+      category: 'General',
       usage: 'botinfo',
       aliases: ['bi'],
       enabled: true,
