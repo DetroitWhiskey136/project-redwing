@@ -48,8 +48,8 @@ class HelpCommand extends Command {
       if (commands.length <= 0) {
         try {
           let command = query;
-          if (client.commands.has(command)) {
-            command = client.commands.get(command);
+          if (client.commands.has(command) || client.commands.has(client.aliases.get(command))) {
+            command = client.commands.get(command) || client.commands.get(client.aliases.get(command));
             if (level < client.levelCache[command.conf.permLevel]) return;
             embed.addField(toProperCase(command.help.name), `${command.help.description} \nusage -- ${command.help.usage} \naliases -- ${command.conf.aliases.join(', ')}`);
             channel.send(embed);
