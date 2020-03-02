@@ -40,9 +40,15 @@ class BanCommand extends Command {
       embed.setDescription('That user does not exist.').setColor('RED');
       return sendMessage(embed);
     }
+
     let reason = "Unspecified Reason";
     if(args.length > 2){
       reason = args.join(' ').replace(args[0], '').trim();
+    }
+
+    if(!mem.bannable){
+      embed.setDescription('That user cannot be banned.').setColor('RED');
+      return message.channel.send(embed);
     }
 
     mem.ban(reason)

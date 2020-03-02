@@ -47,6 +47,11 @@ class MuteCommand extends Command {
       return sendMessage(embed);
     }
 
+    if(!mem.manageable){
+      embed.setDescription('That user cannot be muted.').setColor('RED');
+      return message.channel.send(embed);
+    }
+
     if(mem.roles.has(muterole.id)){
       mem.roles.remove([muterole.id]).catch(err => console.log(err));
       embed.setDescription(`Unmuted ${mem}`).setColor('GREEN');

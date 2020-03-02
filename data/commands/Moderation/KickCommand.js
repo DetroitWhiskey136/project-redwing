@@ -45,6 +45,11 @@ class KickCommand extends Command {
       reason = args.join(' ').replace(args[0], '').trim();
     }
 
+    if(!mem.kickable){
+      embed.setDescription('That user cannot be kicked.').setColor('RED');
+      return message.channel.send(embed);
+    }
+
     mem.kick(reason)
     embed.setDescription(`Kicked ${mem} for \`${reason}\``).setColor('GREEN');
     sendMessage(embed);
