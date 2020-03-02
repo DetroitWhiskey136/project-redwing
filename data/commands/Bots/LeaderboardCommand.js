@@ -18,12 +18,12 @@ class LeaderboardCommand extends Command {
 
   run({ totalLength, message, mentions, member, guild, author, channel, client, voiceChannel, level, prefix, database, query, args, discord, messageEmbed, sendMessage }) { // eslint-disable-line no-unused-vars
     const leaderboard = database.bots.indexes;
-    const sorted = leaderboard.sort((a, b) => b.alltime_votes - a.alltime_votes);
+    const sorted = leaderboard.sort((a, b) => b.monthly_votes - a.monthly_votes);
     const top5 = sorted.splice(0, 5);
     const list = [];
     let num = 1;
     for(const data of top5) {
-      if(data.status != "official" || data.status != "dev"){
+      if(['official','dev'].includes(data.status)){
         list.push(`**${num})** ${client.users.get(data.id)} - **${data.monthly_votes}**`);
         num=num+1
       }
@@ -31,7 +31,7 @@ class LeaderboardCommand extends Command {
     const e = new messageEmbed()
       .setAuthor(`Monthly Leaderboard`, author.avatarURL())
       .setColor('#36393E')
-      .setDescription(list);
+      .setDescription((list.length === 0) ? "No bots have votes yet" : list);
     message.channel.send(e);
   }
 }
