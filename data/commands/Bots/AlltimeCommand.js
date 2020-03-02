@@ -23,7 +23,7 @@ class TemplateCommand extends Command {
     const list = [];
     let num = 1;
     for(const data of top5) {
-        if(data.status != "official" || data.status != "dev"){
+        if(!(["official", "dev"].includes(data.status) || data.monthly_votes === 0)){
             list.push(`**${num})** ${client.users.get(data.id)} - **Votes ${data.alltime_votes}**`);
             num=num+1
         }
@@ -31,7 +31,7 @@ class TemplateCommand extends Command {
     const e = new messageEmbed()
       .setAuthor(`All Time Leaderboard`, author.avatarURL())
       .setColor('#36393E')
-      .setDescription(list);
+      .setDescription((list.length === 0) ? "No bots have votes yet" : list);
     message.channel.send(e);
   }
 }
