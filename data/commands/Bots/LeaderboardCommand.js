@@ -18,7 +18,7 @@ class LeaderboardCommand extends Command {
 
   run({ totalLength, message, mentions, member, guild, author, channel, client, voiceChannel, level, prefix, database, query, args, discord, messageEmbed, sendMessage }) { // eslint-disable-line no-unused-vars
     const leaderboard = database.bots.indexes;
-    const sorted = leaderboard.sort((a, b) => b.alltime_votes - a.alltime_votes);
+    const sorted = leaderboard.sort((a, b) => b.monthly_votes - a.monthly_votes);
     const top5 = sorted.splice(0, 5);
     const list = [];
     let num = 1;
