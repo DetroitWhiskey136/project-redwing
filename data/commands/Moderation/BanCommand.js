@@ -12,7 +12,7 @@ class BanCommand extends Command {
       usage: 'ban <user>',
       guildOnly: true,
       aliases: [],
-      permLevel: 'user',
+      permLevel: 'moderator',
     });
   }
 

@@ -22,8 +22,16 @@ class Users {
    * @returns {Enmap} The database.
    */
   set(bid, data) {
-    const { muted, votecool } = data
-    return this.database.users.set(bid, data);
+    const { muted, votecool, suggestbl, botbl } = data
+
+    const result = {
+      muted: muted || false,
+      votecool: votecool || null,
+      suggestbl: suggestbl || false,
+      botbl: botbl || false,
+    }
+
+    return this.database.users.set(bid, result);
   }
 
   /**
