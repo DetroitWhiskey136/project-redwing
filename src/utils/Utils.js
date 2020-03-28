@@ -2,6 +2,7 @@
 'use strict';
 
 const { REGEX: { REGEX, USER_ID } } = require('@utils/Constants');
+const manager = require('@discord/Manager');
 
 class Utils {
   /**
@@ -111,6 +112,40 @@ class Utils {
     let result;
     str === 'true' ? result = true : str === 'false' ? result = false : result = str;
     return result;
+  }
+
+  /**
+   * Tries to get a guild member based on the parmas provided
+   * @param {*} query fuzzy search params
+   * @param {*} message the message used
+   * @returns {GuildMember|null} The GuildMember or null
+   * @memberof Utils
+   */
+  static getMember(query, message) {
+    const { member, guild, mentions } = message;
+    let guildMember;
+    if (query.length <= 0) {
+      guildMember = member;
+    } else if (mentions.members.size >= 1) {
+      guildMember = mentions.members.first();
+    } else {
+      guildMember = manager.get(guild.members, query) ||
+        manager.find(guild.members, (m) => m.displayName.toUpperCase() === query.toUpperCase()) ||
+        manager.find(guild.members, (m) => m.user.username.toUpperCase() === query.toUpperCase()) ||
+        manager.find(guild.members, (m) => m.user.tag.toUpperCase() === query.toUpperCase()) ||
+        manager.find(guild.members, (m) => m.user.id.toUpperCase() === query.toUpperCase()) ||
+        manager.find(guild.members, (m) => m.user.username.toUpperCase().startsWith(query.toUpperCase())) ||
+        manager.find(guild.members, (m) => m.user.username.toUpperCase().endsWith(query.toUpperCase())) ||
+        manager.find(guild.members, (m) => m.displayName.toUpperCase().startsWith(query.toUpperCase())) ||
+        manager.find(guild.members, (m) => m.displayName.toUpperCase().endsWith(query.toUpperCase())) ||
+        null;
+    }
+
+    if (!guildMember) {
+      return null;
+    } else {
+      return guildMember;
+    }
   }
 }
 

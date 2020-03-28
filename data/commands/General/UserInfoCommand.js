@@ -3,6 +3,7 @@
 const Command = require('@command/Command');
 const { PERM_NAMES } = require('@utils/Constants');
 const moment = require('moment');
+const { getMember } = require('@utils/Utils');
 
 class UserInfoCommand extends Command {
   constructor(client) {
@@ -18,74 +19,49 @@ class UserInfoCommand extends Command {
   }
 
   run({ totalLength, message, mentions, member, guild, author, channel, client, voiceChannel, level, prefix, database, query, args, discord, messageEmbed, sendMessage }) {
-    const normargs = args.join(' ').toLowerCase();
-    const mentionedMember = guild.member(
-      mentions.users.first()) ||
-      guild.members.find((m) => m.displayName.toLowerCase() === normargs) ||
-      guild.members.find((m) => m.id === args[0]) ||
-      guild.members.find((m) => m.user.tag.toLowerCase() === normargs) ||
-      guild.members.find((m) => m.user.username.toLowerCase() === normargs) ||
-      guild.members.find((m) => m.user.discriminator.toLowerCase() === args.join(' '));
-    if (!mentionedMember) {
-      const game = author.presence.activity === null ? 'Not Set' : message.author.presence.activity;
+    const embed = new messageEmbed();
+    const guildMember = getMember(query, message);
 
-      let friendly = client.perms.find((l) => l.level === level).name;
-      friendly = PERM_NAMES[friendly] || new Error('this user needs to be looked at as they don\'t have a perm level');
+    let friendly = 'Not Available';
 
-      const embed = new messageEmbed()
-        .setTitle(`${member.displayName}'s info`)
-        .setColor(member.displayColor)
-        .setThumbnail(author.displayAvatarURL({
-          size: 2048,
-        }))
-        .addField('≈ Tag ≈', author.tag, true)
-        .addField('≈ ID ≈', author.id, true)
-        .addField('≈ Game ≈', game, true)
-        .addField('≈ Status ≈',
-          author.presence.status === 'dnd' ?
-            'Do Not Disturb' :
-            author.presence.status === 'offline' ?
-              'Offline' :
-              author.presence.status === 'idle' ?
-                'Idle' :
-                author.presence.status === 'online' ?
-                  'Online' :
-                  'Unknown', true)
-        .addField('≈ Highest Role ≈', member.roles.highest, true)
-        .addField('≈ Hoisted Color ≈', member.displayHexColor, true)
-        .addField('≈ Created At ≈', moment(author.createdTimestamp).format('LLL'), true)
-        .addField('≈ Joined At ≈', moment(member.joinedTimestamp).format('LLL'), true)
-        .addField('≈ Perm Level ≈', `${level} : ${friendly}`, true)
-        .addField('≈ Account Type ≈', member.user.bot === true ? '<:BOT:646453909786984453>' : '<:HUMAN:646454603789107230>', true)
-        .setFooter(`Is Bot? ${author.bot} | Deleted? ${member.deleted} | Bannable? ${member.bannable} | Kickable? ${member.kickable} | manageable? ${member.manageable}`);
-
-      channel.send(embed);
+    if (!guildMember) {
+      embed.setDescription('Member not found');
     } else {
-      const game = mentionedMember.user.presence.activity === null ? 'Not Set' : mentionedMember.user.presence.activity;
-      const embed = new messageEmbed()
-        .setTitle(`${mentionedMember.displayName}'s info`)
-        .setColor(mentionedMember.displayColor)
-        .setThumbnail(mentionedMember.user.displayAvatarURL({
+      const user = guildMember.user;
+      let game = user.presence.activity === null ? 'Not Set' : user.presence.activities.map((a) => a.name).filter((a) => a !== 'Custom Status');
+
+      const memberLevel = client.getPerm(guildMember);
+      if (memberLevel >= 0) {
+        friendly = client.perms.find((l) => l.level === memberLevel).name;
+        friendly = PERM_NAMES[friendly] || new Error('this user needs to be looked at as they don\'t have a perm level');
+      }
+
+      embed
+        .setTitle(`${guildMember.displayName}'s info`)
+        .setColor(guildMember.displayColor)
+        .setThumbnail(user.displayAvatarURL({
           size: 2048,
         }))
-        .addField('≈ Tag ≈', mentionedMember.user.tag, true)
-        .addField('≈ ID ≈', mentionedMember.user.id, true)
-        .addField('≈ Game ≈', game, true)
+        .addField('≈ Tag ≈', user.tag, true)
+        .addField('≈ ID ≈', user.id, true)
+        .addField('≈ Game ≈', game.length >= 1 ? game : 'Not playing a game', true)
         .addField('≈ Status ≈',
-          mentionedMember.user.presence.status === 'dnd' ?
+          user.presence.status === 'dnd' ?
             'Do Not Disturb' :
-            mentionedMember.user.presence.status === 'offline' ?
+            user.presence.status === 'offline' ?
               'Offline' :
-              mentionedMember.user.presence.status === 'idle' ?
+              user.presence.status === 'idle' ?
                 'Idle' :
-                mentionedMember.user.presence.status === 'online' ?
+                user.presence.status === 'online' ?
                   'Online' :
                   'Unknown', true)
-        .addField('≈ Highest Role ≈', mentionedMember.roles.highest, true)
-        .addField('≈ Hoisted Color ≈', mentionedMember.displayHexColor, true)
-        .addField('≈ Created At ≈', moment(mentionedMember.user.createdTimestamp).format('LLL'), true)
-        .addField('≈ Joined At ≈', moment(mentionedMember.joinedTimestamp).format('LLL'), true)
-        .setFooter(`Is Bot? ${mentionedMember.user.bot} | Deleted? ${mentionedMember.deleted} | Bannable? ${mentionedMember.bannable} | Kickable? ${mentionedMember.kickable} | manageable? ${mentionedMember.manageable}`);
+        .addField('≈ Highest Role ≈', guildMember.roles.highest, true)
+        .addField('≈ Hoisted Color ≈', guildMember.displayHexColor, true)
+        .addField('≈ Created At ≈', moment(user.createdTimestamp).format('LLL'), true)
+        .addField('≈ Joined At ≈', moment(guildMember.joinedTimestamp).format('LLL'), true)
+        .addField('≈ Perm Level ≈', `${memberLevel} : ${friendly}`, true)
+        .addField('≈ Account Type ≈', guildMember.user.bot === true ? '<:BOT:646453909786984453>' : '<:HUMAN:646454603789107230>', true)
+        .setFooter(`Is Bot? ${user.bot} | Deleted? ${guildMember.deleted} | Banable? ${guildMember.banable} | Kickable? ${guildMember.kickable} | manageable? ${guildMember.manageable}`);
 
       channel.send(embed);
     }

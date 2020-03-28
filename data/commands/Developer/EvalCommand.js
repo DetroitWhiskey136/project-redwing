@@ -1,6 +1,6 @@
 /* eslint-disable max-len, max-depth, no-unused-vars */
 'use strict';
-const token = process.env.TOKEN;
+const token = process.env.DISCORD_TOKEN;
 const { code } = require('@utils/Utils');
 const Command = require('@command/Command');
 const { inspect } = require('util');
@@ -10,7 +10,7 @@ class EvalCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'eval',
-      description: 'Evaluates arbituabry JavaScript',
+      description: 'Evaluates arbitrary JavaScript',
       category: 'Developer',
       usage: 'eval <code>',
       aliases: ['compile', 'ev', 'js'],

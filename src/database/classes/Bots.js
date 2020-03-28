@@ -22,7 +22,8 @@ class Bots {
    * @returns {Enmap} The database.
    */
   set(id, data) {
-    const { alltime_votes, certified, description, embedobj, id, monthly_votes, name, owner, prefix, status } = data
+    // eslint-disable-next-line no-unused-vars
+    const { alltime_votes, certified, description, embedobj, monthly_votes, name, owner, prefix, status } = data;
     return this.database.bots.set(id, data);
   }
 
@@ -33,7 +34,7 @@ class Bots {
    * @param {string|Number|boolean} value The value.
    * @returns {Enmap} The database.
    */
-  update(id, {key, value}) {
+  update(id, { key, value }) {
     let oldData = this.database.bots.get(id);
     oldData[key] = value;
   }
@@ -48,5 +49,4 @@ class Bots {
     return this.database.bots.delete(id);
   }
 }
-
 module.exports = Bots;

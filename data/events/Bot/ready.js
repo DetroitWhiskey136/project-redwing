@@ -22,9 +22,9 @@ class ReadyEvent extends Event {
 
     require('@utils/dashboard')(client);
 
-    client.user.setActivity(`mentions | ${client.guilds.size} Guilds`, { type: 3 });
+    client.user.setActivity(`mentions | ${client.guilds.cache.size} Guilds`, { type: 3 });
 
-    client.logger.ready(`${client.user.username}, Ready to serve ${client.users.size} users in ${client.guilds.size} guilds.`);
+    client.logger.ready(`${client.user.username}, Ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} guilds.`);
   }
 }
 

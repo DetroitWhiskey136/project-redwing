@@ -10,17 +10,17 @@ class MessageEvent extends Event {
   constructor(client) {
     super(client, {
       name: 'message',
-      description: 'Fires when a message is recieved',
+      description: 'Fires when a message is received',
       enabled: true,
     });
   }
 
   run(client, message) {
-    // Get useful poperties from the message object
+    // Get useful properties from the message object
     const { author, channel, content, guild, member } = message;
     const database = client.database;
 
-    // Check if author is a bot and if the client has permisson to speak in the channel
+    // Check if author is a bot and if the client has permission to speak in the channel
     if (author.bot || (guild && !channel.permissionsFor(client.user).has('SEND_MESSAGES'))) return;
 
     const settings = client.database.fn.settings.get(guild.id);
@@ -42,9 +42,9 @@ class MessageEvent extends Event {
     const helpPrefix = `My prefix in this guild is: ${prefix}`;
 
     if (usedPrefix) {
-      // split the message content into seperate arguments
+      // split the message content into separate arguments
       const args = content.slice(usedPrefix.length).trim().split(/ +/g);
-      // get the commandName from the first argumnet
+      // get the commandName from the first argument
       const commandName = args.shift().toLowerCase();
       // get the command from the client based on commandName
       const command = client.commands.get(commandName) || client.commands.get(client.aliases.get(commandName));

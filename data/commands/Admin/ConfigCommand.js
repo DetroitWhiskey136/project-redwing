@@ -18,7 +18,7 @@ class ConfigCommand extends Command {
   }
 
   run({ totalLength, message, mentions, member, guild, author, channel, client, voiceChannel, level, prefix, database, query, args: [key, ...value], discord, messageEmbed, sendMessage }) { // eslint-disable-line no-unused-vars
-    const keys = ['adminlog', 'adminrole', 'prefix', 'sysnotice', 'leaveen', 'leavelog', 'leavemsg', 'modlog', 'modrole', 'welcomeen', 'welcomelog', 'welcomemsg'];
+    const keys = ['adminlog', 'adminrole', 'prefix', 'sysnotice', 'leaveen', 'leavelog', 'leavemsg', 'modlog', 'modrole', 'welcomeen', 'welcomelog', 'welcomemsg', 'verifyguild', 'verifychannel'];
     const gSettings = database.fn.settings.get(guild.id);
     value = value.join(' ');
 

@@ -29,7 +29,7 @@ class ReloadCommand extends Command {
     response = client.loadCommand(commands.conf.location, commands.conf.fileName);
     if (response) return message.reply(`Error Loading: ${response}`);
 
-    console.log(`Reloaded ${commands.help.name}`); // Delete later
+    client.logger.log(`Reloaded ${commands.help.name}`); // Delete later
     channel.send(`The Command \`${commands.help.name}\` has been reloaded.`);
   }
 }

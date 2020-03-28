@@ -24,7 +24,7 @@ class Settings {
    */
   set(guildID, data) {
     // eslint-disable-next-line max-len, no-unused-vars
-    const { prefix, sysnotice, modlog, modrole, adminlog, adminrole, welcomelog, welcomemsg, welcomeen, leavelog, leavemsg, leaveen } = data;
+    const { prefix, sysnotice, modlog, modrole, adminlog, adminrole, welcomelog, welcomemsg, welcomeen, leavelog, leavemsg, leaveen, verifyguild, verifychannel } = data;
 
     const result = {
       general: {
@@ -49,12 +49,16 @@ class Settings {
         leavemsg: leavemsg || `All good things come to an end`,
         leaveen: leaveen || false,
       },
+      bots: {
+        verifyguild: verifyguild || null,
+        verifychannel: verifychannel || null,
+      },
     };
     return this.database.settings.set(guildID, result);
   }
 
   /**
-   * Delets the data of a guild
+   * Deletes the data of a guild
    * @param {String} guildID
    */
   delete(guildID) {

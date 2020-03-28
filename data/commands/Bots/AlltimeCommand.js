@@ -22,16 +22,16 @@ class TemplateCommand extends Command {
     const top5 = sorted.splice(0, 5);
     const list = [];
     let num = 1;
-    for(const data of top5) {
-        if(['official','dev'].includes(data.status)){
-            list.push(`**${num})** ${client.users.get(data.id)} - **Votes ${data.alltime_votes}**`);
-            num=num+1
-        }
+    for (const data of top5) {
+      if (['official', 'dev'].includes(data.status)) {
+        list.push(`**${num})** ${client.users.cache.get(data.id)} - **Votes ${data.alltime_votes}**`);
+        num = num++;
+      }
     }
     const e = new messageEmbed()
       .setAuthor(`All Time Leaderboard`, author.avatarURL())
       .setColor('#36393E')
-      .setDescription((list.length === 0) ? "No bots have votes yet" : list);
+      .setDescription(list.length === 0 ? 'No bots have votes yet' : list);
     message.channel.send(e);
   }
 }
