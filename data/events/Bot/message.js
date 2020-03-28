@@ -23,6 +23,9 @@ class MessageEvent extends Event {
     // Check if author is a bot and if the client has permission to speak in the channel
     if (author.bot || (guild && !channel.permissionsFor(client.user).has('SEND_MESSAGES'))) return;
 
+    // Ensure database information
+    database.fn.users.ensure(member.id);
+
     const settings = client.database.fn.settings.get(guild.id);
     message.settings = settings;
 

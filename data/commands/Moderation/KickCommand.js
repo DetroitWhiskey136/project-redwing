@@ -12,7 +12,7 @@ class KickCommand extends Command {
       usage: 'kick <user>',
       guildOnly: true,
       aliases: [],
-      permLevel: 'user',
+      permLevel: 'moderator',
     });
   }
 
